@@ -1,0 +1,55 @@
+<div fxLayout="row" fxLayoutAlign="center center" >
+    <mat-tab-group fxLayout="column" fxLayoutAlign="space-between center" >
+        <mat-tab label="Usuarios" class="title" fxLayout="row" >
+            <div *ngFor="let user of users| async" class="List-group-item col-lg-4 card" style="width: 19rem;">
+                <div class="card-body" fxLayout="column" >
+                    <h4 class="card-title" fxLayoutAlign="center center" >{{user.name}}</h4>
+                    <p class="card-text" >{{user.age}}</p>
+                    <p class="card-text" >{{user.email}}</p>
+                    <p class="card-text">{{user.phone}}</p>
+                    <p class="card-text">{{user.address}}</p>
+                </div>
+            </div>
+            
+        </mat-tab>
+        <mat-tab label="Crear usuario" fxLayoutAlign="center center">
+            <div class="List-group-item col-lg-4 card" style="width: 19rem;" >
+                
+                <Form  fxLayout="column" >
+                    <div fxLayout="column" fxLayoutAlign="center center">
+                    <div>
+                    <input [(ngModel)]="createUser.name" type="text" placeholder="Ingresar el nombre">
+                    </div>
+                    <div>
+                    <input [(ngModel)]="createUser.email" type="text" placeholder="Ingresar el email">
+                    </div>
+                    <div>
+                    <input [(ngModel)]="createUser.age" type="text" placeholder="Ingresar el edad">
+                    </div>
+                    <input [(ngModel)]="createUser.address" type="text" placeholder="Ingresar el direccion">
+                    <div>
+                    <input [(ngModel)]="createUser.phone" type="text" placeholder="Ingresar el telefono">
+                    </div>
+                    <div>
+                    <button  (click)="CreateUser()">Crear</button>
+                    </div>
+                </div>
+                </Form>
+            </div>
+        </mat-tab>
+        <mat-tab label="Borrar usuario">
+            <div *ngFor="let user of users | async" class="List-group-item col-lg-4 card" style="width: 19rem;">
+                <div class="card-body" fxLayout="column" >
+                    <h4 class="card-title" fxLayoutAlign="center center" >{{user.name}}</h4>
+                    <p class="card-text" >{{user.age}}</p>
+                    <p class="card-text" >{{user.email}}</p>
+                    <p class="card-text">{{user.phone}}</p>
+                    <p class="card-text">{{user.address}}</p>
+                    <button  (click)="DeleteUser(user._id)">eliminar
+                    </button>
+                </div>
+            </div>
+        </mat-tab>
+      </mat-tab-group>
+      
+    </div>
